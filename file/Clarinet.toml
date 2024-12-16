@@ -1,0 +1,58 @@
+[project]
+name = "real-estate-tokenization"
+description = "A platform for tokenizing real estate assets on Stacks blockchain"
+authors = []
+telemetry = false
+cache_dir = "./.cache"
+requirements = [
+    "SP3FBR2AGK5H9QBDH3EEN6DF8EK8JY7RX8QJ5SVTE.sip-010-trait-ft-standard"
+]
+boot_contracts = ["pox", "costs-v2", "bns"]
+
+[contracts.real-estate-token]
+path = "contracts/real-estate-token.clar"
+clarity_version = 2
+epoch = 2.4
+
+[repl.analysis]
+passes = ["check_checker"]
+
+[repl.analysis.check_checker]
+strict = true
+trusted_sender = false
+trusted_caller = false
+callee_filter = false
+
+[project.cache_location]
+path = "./.requirements"
+
+[network]
+# Simnet config for local testing
+name = "simnet"
+node_rpc_address = "http://localhost:20443"
+deployment_fee_rate = 10
+
+# Testnet config
+[network.testnet]
+node_rpc_address = "https://stacks-node-api.testnet.stacks.co"
+deployment_fee_rate = 10
+
+# Mainnet config
+[network.mainnet]
+node_rpc_address = "https://stacks-node-api.mainnet.stacks.co"
+deployment_fee_rate = 10
+
+# Development settings
+[tx_sender]
+address = "ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM"
+secret_key = "753b7cc01a1a2e86221266a154af739463fce51219d97e4f856cd7200c3bd2a601"
+
+# Contract addresses for different networks
+[contracts.real-estate-token.simnet]
+address = "ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM"
+
+[contracts.real-estate-token.testnet]
+address = "ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM"
+
+[contracts.real-estate-token.mainnet]
+address = "SP3FBR2AGK5H9QBDH3EEN6DF8EK8JY7RX8QJ5SVTE"
